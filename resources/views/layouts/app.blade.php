@@ -4,19 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&family=Playfair+Display:wght@400..900&display=swap" rel="stylesheet">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
 <div id="app">
+    <!-- Header Section -->
     <header class="bg-gray-800 py-6">
         <div class="container mx-auto flex justify-between items-center px-6">
             <div>
@@ -24,37 +30,44 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
-            <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
+            <nav class="space-x-4 text-gray-300 text-sm sm:text-base" aria-label="Main Navigation">
                 <a class="no-underline hover:underline" href="/">Home</a>
-                <a class="no-underline hover:underline" href="/about">about</a>
+                <a class="no-underline hover:underline" href="/about">About</a>
+                <a class="no-underline hover:underline" href="/contact">Contact</a>
                 <a class="no-underline hover:underline" href="/blog">Blog</a>
+
+                @auth
+                    <a class="no-underline hover:underline" href="{{ route('blog.create') }}">Create Post</a>
+                    <span class="text-white font-bold">{{ Auth::user()->name }}</span>
+                    <a href="{{ route('logout') }}"
+                       class="no-underline hover:underline"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                        @csrf
+                    </form>
+                @endauth
+
                 @guest
                     <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
                         <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
-                @else
-                    <span>{{ Auth::user()->name }}</span>
-
-                    <a href="{{ route('logout') }}"
-                       class="no-underline hover:underline"
-                       onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                        {{ csrf_field() }}
-                    </form>
                 @endguest
             </nav>
         </div>
     </header>
 
-    <div>
+    <!-- Main Content Section -->
+    <main class="container mx-auto py-8">
         @yield('content')
-    </div>
+    </main>
 
-    <div>
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white text-center py-4">
         @include('layouts.footer')
-    </div>
+    </footer>
 </div>
 </body>
 </html>

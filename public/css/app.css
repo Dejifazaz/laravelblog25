@@ -42692,6 +42692,20 @@ h2
   color: #000000 !important;
 }
 
+h1,h2,h3{
+  font-family: "Playfair Display", serif !important;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+body{
+  font-family: "DM Sans", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -210023,4 +210037,5 @@ h2
     animation: bounce 1s infinite;
   }
 }
+
 

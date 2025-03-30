@@ -26,11 +26,11 @@
     <!-- Two Column Layout with Images -->
     <div class="grid md:grid-cols-2 gap-10 w-4/5 mx-auto pb-16">
         <div class="text-center">
-            <img src="https://via.placeholder.com/300" alt="Placeholder Image" class="mx-auto rounded-lg shadow-md">
+            <img src="https://picsum.photos/300/200?random=1" alt="About Image 1" class="mx-auto rounded-lg shadow-md">
             <p class="text-gray-500 mt-4">Passionate about coding and problem-solving.</p>
         </div>
         <div class="text-center">
-            <img src="https://via.placeholder.com/300" alt="Placeholder Image" class="mx-auto rounded-lg shadow-md">
+            <img src="https://picsum.photos/300/200?random=2" alt="About Image 2" class="mx-auto rounded-lg shadow-md">
             <p class="text-gray-500 mt-4">Lifelong learner and technology enthusiast.</p>
         </div>
     </div>

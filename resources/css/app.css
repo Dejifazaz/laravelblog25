@@ -1,8 +1,8 @@
+
 @import "tailwindcss/base";
-
 @import "tailwindcss/components";
-
 @import "tailwindcss/utilities";
+
 
 .background-image
 {
@@ -18,3 +18,21 @@ h2
 {
     color: #000000 !important;
 }
+
+h1,h2,h3{
+
+    font-family: "Playfair Display", serif !important;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+
+}
+
+body{
+
+    font-family: "DM Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
